@@ -1,0 +1,14 @@
+<?php
+
+use App\Controllers\Devices;
+use CodeIgniter\Router\RouteCollection;
+
+/**
+ * @var RouteCollection $routes
+ */
+$routes->group('', function ($routes) {
+  $routes->get('/', [Devices::class, 'index']);
+  $routes->get('/create', [Devices::class, 'createPage']);
+  $routes->post('/create', [Devices::class, 'create']);
+  $routes->get('devices', [Devices::class, 'get_devices']);
+});
