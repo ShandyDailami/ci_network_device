@@ -8,6 +8,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group('', function ($routes) {
   $routes->get('/', [Devices::class, 'index']);
+  $routes->get('/panel', [Devices::class, 'panelPage']);
+  $routes->post('/panel', [Devices::class, 'panel']);
   $routes->get('/create', [Devices::class, 'createPage']);
   $routes->post('/create', [Devices::class, 'create']);
   $routes->get('devices', [Devices::class, 'get_devices']);

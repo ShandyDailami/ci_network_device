@@ -18,6 +18,16 @@ class Devices extends BaseController
         return view('devices/view', $data);
     }
 
+    public function panelPage()
+    {
+        $model = new Device();
+        $data = [
+            'title' => 'Home',
+            'devices' => $model->findAll(),
+        ];
+        return view('devices/panel', $data);
+    }
+
     public function createPage()
     {
         return view('devices/create', ['title' => 'Create']);
