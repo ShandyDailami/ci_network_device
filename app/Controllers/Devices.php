@@ -92,8 +92,65 @@ class Devices extends BaseController
         $data = [
             'title' => 'Edit',
             'device' => $model->find($id),
-
         ];
         return view('devices/edit', $data);
+    }
+
+    public function update($id)
+    {
+        helper('form');
+        if (
+            $this->validate([
+                'device_name' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Device Name cannot be empty'
+                    ],
+                ],
+                'latitude' => [
+                    'rules' => 'required|numeric',
+                    'errors' => [
+                        'required' => 'Latitude cannot be empty',
+                        'numeric' => 'Latitude must be numeric'
+                    ],
+                ],
+                'longitude' => [
+                    'rules' => 'required|numeric',
+                    'errors' => [
+                        'required' => 'Longitude cannot be empty',
+                        'numeric' => 'Longitude must be numeric'
+                    ],
+                ],
+                'location' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Longitude cannot be empty',
+                    ],
+                ],
+            ])
+        ) {
+            $model = new Device();
+            $model->update($id, [
+                'device_name' => $this->request->getPost('device_name'),
+                'latitude' => $this->request->getPost('latitude'),
+                'longitude' => $this->request->getPost('longitude'),
+                'location' => $this->request->getPost('location'),
+            ]);
+
+            return redirect()->to('/panel')->with('message', 'Data Successfully Updated');
+        } else {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+    }
+
+    public function delete($id)
+    {
+        $model = new Device();
+        $device = $model->find($id);
+        if (!$device) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Data Not Found');
+        }
+        $model->delete($id);
+        return redirect()->to('/panel')->with('message', 'Data Successfully Deleted');
     }
 }

@@ -26,6 +26,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const deleteBtn = document.querySelectorAll('[data-bs-target="#delete"]');
+  const confirmBtn = document.getElementById('confirm');
+  let selectedId = null;
+
+  deleteBtn.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      selectedId = btn.dataset.id;
+    });
+  });
+
+  confirmBtn.addEventListener('click', () => {
+    window.location.href = 'delete/' + selectedId;
+  });
+});
+
 const map = L.map('map', {
   center: [-3.445584, 114.84050],
   zoom: 20,

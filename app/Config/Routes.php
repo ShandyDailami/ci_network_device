@@ -13,7 +13,7 @@ $routes->group('', function ($routes) {
   $routes->get('/create', [Devices::class, 'createPage']);
   $routes->post('/create', [Devices::class, 'create']);
   $routes->get('devices', [Devices::class, 'get_devices']);
-
+  $routes->get('/delete/(:num)', [Devices::class, 'delete']);
   $routes->get('/edit/(:num)', [Devices::class, 'editPage']);
-
+  $routes->post('/edit/(:num)', [Devices::class, 'update']);
 });
