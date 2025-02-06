@@ -85,4 +85,15 @@ class Devices extends BaseController
         $model = new Device();
         return $this->response->setJSON($model->findAll());
     }
+
+    public function editPage($id)
+    {
+        $model = new Device();
+        $data = [
+            'title' => 'Edit',
+            'device' => $model->find($id),
+
+        ];
+        return view('devices/edit', $data);
+    }
 }

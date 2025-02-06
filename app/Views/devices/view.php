@@ -13,18 +13,25 @@
     </div>
   </div>
 </nav>
-<div class="container-fluid">
-  <?php foreach ($devices as $device): ?>
-    <div class="card" style="width: 18rem;">
-      <div id="map"></div>
-      <div class="card-body">
-        <p class="card-text">Device Name: <?= esc($device['device_name']) ?></p>
-        <p class="card-text">Latitude: <?= esc($device['latitude']) ?></p>
-        <p class="card-text">Longitude:<?= esc($device['longitude']) ?></p>
-        <p class="card-text">Location: <?= esc($device['location']) ?></p>
-      </div>
+<div class="row container-fluid">
+  <div class="col">
+    <div class="card">
+      <div id="map" class="rounded"></div>
     </div>
-  <?php endforeach ?>
+
+  </div>
+  <div class="col d-flex align-items-start justify-content-start gap-2 flex-wrap" style="height: 100%;">
+    <?php foreach ($devices as $device): ?>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <p class="card-text">Device Name: <?= esc($device['device_name']) ?></p>
+          <p class="card-text">Latitude: <?= esc($device['latitude']) ?></p>
+          <p class="card-text">Longitude:<?= esc($device['longitude']) ?></p>
+          <p class="card-text">Location: <?= esc($device['location']) ?></p>
+        </div>
+      </div>
+    <?php endforeach ?>
+  </div>
 </div>
 
 <?= $this->endSection('content') ?>

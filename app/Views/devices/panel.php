@@ -37,9 +37,8 @@
             <td><?= esc($device['longitude']) ?></td>
             <td><?= esc($device['location']) ?></td>
             <td colspan="2">
-              <a href="/admin/edit/<?= esc($device['id']) ?>" class="text-decoration-none btn btn-outline-primary">
-                <i class="bi bi-pencil-square"></i>
-              </a>
+              <button id="edit" data-id="<?= esc($device['id']) ?>" class="btn btn-primary"><i
+                  class="bi bi-pencil-square"></i></button>
               <button type="button" data-bs-target="#delete" data-bs-toggle="modal" class="btn btn-outline-danger"
                 data-id="<?= esc($device['id']) ?>">
                 <i class="bi bi-trash"></i>

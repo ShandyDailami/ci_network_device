@@ -12,7 +12,7 @@ class Devices extends Migration
             'id' => [
                 'type' => 'INT',
                 'constraint' => 5,
-                'auto_incement' => true,
+                'auto_increment' => true,
                 'unsigned' => true,
             ],
             'device_name' => [

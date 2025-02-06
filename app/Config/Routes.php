@@ -13,4 +13,7 @@ $routes->group('', function ($routes) {
   $routes->get('/create', [Devices::class, 'createPage']);
   $routes->post('/create', [Devices::class, 'create']);
   $routes->get('devices', [Devices::class, 'get_devices']);
+
+  $routes->get('/edit/(:num)', [Devices::class, 'editPage']);
+
 });

@@ -13,9 +13,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 5000);
 });
 
-const map = L.map('map').setView([-3.445884, 114.84076], 17);
+document.addEventListener('DOMContentLoaded', () => {
+  const editBtn = document.querySelectorAll('#edit');
+  let selectedId = null;
+
+  editBtn.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      selectedId = btn.dataset.id;
+
+      window.location.href = 'edit/' + selectedId;
+    });
+  });
+});
+
+const map = L.map('map', {
+  center: [-3.445584, 114.84050],
+  zoom: 20,
+  zoomControl: false,
+  dragging: false,
+  scrollWheelZoom: false,
+  doubleClickZoom: false,
+  touchZoom: false,
+  boxZoom: false,
+  keyboard: false
+});
+
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
